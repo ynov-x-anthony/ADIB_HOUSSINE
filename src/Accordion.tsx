@@ -6,15 +6,26 @@ type Props = { title: string; children: React.ReactNode }
 // n'a aucune idée que c'est un volet qui s'ouvre/se ferme. Ajoute les
 // attributs ARIA qui manquent (vocabulaire vu dans la quête a11y-03).
 
+
 export default function Accordion({ title, children }: Props) {
   const [expanded, setExpanded] = useState(false)
+  const panelId = useId()
 
   return (
     <div className="accordion">
-      <button className="accordion-trigger" onClick={() => setExpanded(!expanded)}>
+      <button
+        className="accordion-trigger"
+        aria-expanded={expanded}
+        aria-controls={panelId}
+        onClick={() => setExpanded(!expanded)}
+      >
         {title} {expanded ? '▲' : '▼'}
       </button>
-      {expanded && <div className="accordion-panel">{children}</div>}
+      {expanded && (
+        <div id={panelId} className="accordion-panel">
+          {children}
+        </div>
+      )}
     </div>
   )
 }
