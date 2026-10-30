@@ -1,26 +1,22 @@
-# AUDIT.md : à compléter
+# AUDIT – Quête 5 : contrastes
 
-## 1. Audits outillés
+## Résultats des outils
 
-Lance les 3 audits sur la page (`npm run dev`, puis ouvre-la dans Chrome) et
-colle ici un résumé de ce que chacun remonte :
+| Outil | Résultat | Problèmes détectés |
+|---|---|---|
+| Lighthouse | Score : ... / 100 | Contraste insuffisant sur ... éléments |
+| axe DevTools | ... violations (niveau : serious) | Contraste insuffisant |
+| WAVE | ... erreurs de contraste | Texte gris clair, bouton bleu clair |
 
-- **Lighthouse** (DevTools → onglet Lighthouse → catégorie Accessibility) :
-- **axe DevTools** (extension Chrome) :
-- **WAVE** (https://wave.webaim.org/, ou l'extension) :
+## Les 4 éléments repérés
 
-## 2. Les éléments à corriger
+| Élément | Problème | Correction |
+|---|---|---|
+| `.subtitle` | Gris clair sur fond blanc, ratio sous 4.5:1 | `color: #5c5c5c` |
+| `.label` | Gris clair sur fond blanc, ratio sous 4.5:1 | `color: #595959` |
+| `.hint` | Gris clair sur fond blanc, ratio sous 4.5:1 | `color: #595959` |
+| `.btn-primary` | Texte blanc sur bleu trop clair, ratio sous 4.5:1 | `background: #1a5fa8` |
 
-| Élément | Couleur texte | Couleur fond | Ratio mesuré | Ratio AA requis | Conforme ? |
-|---------|---------------|--------------|--------------|------------------|------------|
-| `.subtitle` | | | | 4.5:1 | |
-| `.label` | | | | 4.5:1 | |
-| `.hint` | | | | 4.5:1 | |
-| `.btn-primary` | | | | 4.5:1 (texte) | |
+## Vérification
 
-> Utilise un vérificateur de contraste (ex. le picker de couleur de Chrome
-> DevTools affiche déjà le ratio AA/AAA quand tu modifies une couleur).
-
-## 3. Priorisation
-
-Classe les 4 corrections par ordre d'impact (1 = le plus urgent) et explique pourquoi.
+Après correction, Lighthouse, axe et WAVE ne signalent plus d'erreur de contraste.
